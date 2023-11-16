@@ -16,7 +16,7 @@ ModbusMaster node;
 // mosi 23
 // miso 18
 int incomingByte = 0;
-// String kode_alat = "";
+String kode_alat = "sangku1";
 uint16_t data[10];
 DynamicJsonDocument doc(1024);
 #define ID_meter 1
@@ -117,7 +117,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (millis() % 1000 == 0) {
     GET_METER();
-    String kirim = String(DATA_METER[0]) + ";" + String(DATA_METER[1]);
+    String kirim = kode_alat + ";" + String(DATA_METER[0]) + ";" + String(DATA_METER[1])
     LoRa.beginPacket();
     LoRa.print(kirim);
     LoRa.endPacket();
